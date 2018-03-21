@@ -2,7 +2,7 @@
   "name": "keepachangelog",
   "version": "0.7.2",
   "description": "Programatically modify change logs",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prepublish": "gulp compile",
     "test": "mocha --compilers js:babel-core/register"
@@ -21,7 +21,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0",
     "bluebird": "^2.9.13",
     "lodash-node": "^3.5.0",
     "markdown": "^0.5.0",
@@ -30,7 +29,6 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^2.1.1",
     "co": "^4.4.0",
