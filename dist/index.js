@@ -1,6 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+require('babel-polyfill');
+
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.init = init;
@@ -15,17 +17,17 @@ var _builder = require('./builder');
 
 var _builder2 = _interopRequireDefault(_builder);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-require('babel-polyfill');
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 var fs = require('fs');
 
 var _require = require('lodash-node'),
-    find = _require.find;
+  find = _require.find;
 
 var _require2 = require('bluebird'),
-    promisify = _require2.promisify;
+  promisify = _require2.promisify;
 
 var readFile = promisify(fs.readFile);
 var writeFile = promisify(fs.writeFile);
@@ -33,7 +35,13 @@ var writeFile = promisify(fs.writeFile);
 function init(path) {
   path = path || 'CHANGELOG.md';
 
-  return parse(['# Change Log', 'All notable changes to this project will be documented in this file.', ''].join('\n')).write(path);
+  return parse(
+    [
+      '# Change Log',
+      'All notable changes to this project will be documented in this file.',
+      ''
+    ].join('\n')
+  ).write(path);
 }
 
 function parse(content) {
@@ -42,16 +50,16 @@ function parse(content) {
 
 function read(path) {
   path = path || 'CHANGELOG.md';
-  return readFile(path, { encoding: 'utf8' }).then(function (content) {
+  return readFile(path, { encoding: 'utf8' }).then(function(content) {
     return new Changelog((0, _parser2.default)(content));
   });
 }
 
 function Changelog(_ref) {
   var prelude = _ref.prelude,
-      epilogue = _ref.epilogue,
-      releases = _ref.releases,
-      references = _ref.references;
+    epilogue = _ref.epilogue,
+    releases = _ref.releases,
+    references = _ref.references;
 
   this.prelude = prelude;
   this.epilogue = epilogue;
@@ -59,26 +67,26 @@ function Changelog(_ref) {
   this.references = references;
 }
 
-Changelog.prototype.write = function (path) {
+Changelog.prototype.write = function(path) {
   path = path || 'CHANGELOG.md';
   return writeFile(path, this.build());
 };
 
-Changelog.prototype.build = function () {
+Changelog.prototype.build = function() {
   return (0, _builder2.default)(this);
 };
 
-Changelog.prototype.getRelease = function (version) {
-  return find(this.releases, function (r) {
+Changelog.prototype.getRelease = function(version) {
+  return find(this.releases, function(r) {
     return r.version === version;
   });
 };
 
-Changelog.prototype.addUpcomingChange = function (desc) {
+Changelog.prototype.addUpcomingChange = function(desc) {
   this.addUpcoming('Changed', desc);
 };
 
-Changelog.prototype.addUpcoming = function (type, desc) {
+Changelog.prototype.addUpcoming = function(type, desc) {
   var upcoming = this.getRelease('upcoming');
   if (!upcoming) {
     upcoming = { version: 'upcoming' };
