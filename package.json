@@ -24,6 +24,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "babel-preset-stage-0": "^6.24.1",
     "bluebird": "3.5.0",
     "lodash-node": "^3.5.0",
     "markdown": "^0.5.0",
