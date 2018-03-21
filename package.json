@@ -3,7 +3,9 @@
   "version": "0.7.2",
   "description": "Programatically modify change logs",
   "main": "dist/index.js",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "prepublish": "gulp compile",
     "test": "mocha --compilers js:babel-core/register"
@@ -22,11 +24,11 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "bluebird": "^2.9.13",
+    "bluebird": "3.5.0",
     "lodash-node": "^3.5.0",
     "markdown": "^0.5.0",
     "parsimmon": "0.7.0",
-    "semver": "^4.3.1"
+    "semver": "5.5.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -35,6 +37,6 @@
     "co": "^4.4.0",
     "gulp": "^3.8.11",
     "gulp-babel": "^7.0.0",
-    "mocha": "^5.0."
+    "mocha": "^5.0.0"
   }
 }
