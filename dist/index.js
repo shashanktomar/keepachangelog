@@ -17,6 +17,8 @@ var _builder2 = _interopRequireDefault(_builder);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+require('babel-polyfill');
+
 var fs = require('fs');
 
 var _require = require('lodash-node'),

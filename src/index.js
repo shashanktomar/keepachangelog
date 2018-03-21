@@ -1,15 +1,17 @@
 'use strict';
 
+require('babel-polyfill');
+
 var fs = require('fs');
-var {find} = require('lodash-node');
-var {promisify} = require('bluebird');
+var { find } = require('lodash-node');
+var { promisify } = require('bluebird');
 var readFile = promisify(fs.readFile);
 var writeFile = promisify(fs.writeFile);
 
 import parseChangelog from './parser';
-import buildChangelog from './builder'
+import buildChangelog from './builder';
 
-export function init (path) {
+export function init(path) {
   path = path || 'CHANGELOG.md';
 
   return parse(
@@ -27,17 +29,16 @@ export function parse(content) {
 
 export function read(path) {
   path = path || 'CHANGELOG.md';
-  return readFile(path, {encoding: 'utf8'})
-  .then((content) => {
+  return readFile(path, { encoding: 'utf8' }).then(content => {
     return new Changelog(parseChangelog(content));
   });
 }
 
-function Changelog({prelude, epilogue, releases, references}) {
+function Changelog({ prelude, epilogue, releases, references }) {
   this.prelude = prelude;
   this.epilogue = epilogue;
   this.releases = releases;
-  this.references = references
+  this.references = references;
 }
 
 Changelog.prototype.write = function(path) {
@@ -45,15 +46,13 @@ Changelog.prototype.write = function(path) {
   return writeFile(path, this.build());
 };
 
-
 Changelog.prototype.build = function() {
   return buildChangelog(this);
 };
 
 Changelog.prototype.getRelease = function(version) {
-  return find(this.releases, (r) => r.version === version);
+  return find(this.releases, r => r.version === version);
 };
-
 
 Changelog.prototype.addUpcomingChange = function(desc) {
   this.addUpcoming('Changed', desc);
