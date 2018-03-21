@@ -8,11 +8,7 @@ gulp.task('default', ['compile']);
 gulp.task('compile', function() {
   return gulp
     .src('src/**/*.js')
-    .pipe(
-      babel({
-        plugins: ['transform-runtime']
-      })
-    )
+    .pipe(babel())
     .pipe(gulp.dest('dist'));
 });
 

@@ -1,11 +1,11 @@
 'use strict';
 
-var entryPoint = './dist'
+var entryPoint = './dist';
 
 try {
-  require.resolve(entryPoint)
+  require.resolve(entryPoint);
 } catch (e) {
-  require('babel/register');
+  require('babel-core/register');
   entryPoint = './src';
 }
 
