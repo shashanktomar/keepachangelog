@@ -207,7 +207,7 @@ function isReleaseHeader(el) {
 function extractReleaseTitleInfo(str) {
   if (str.match(UNRELEASED_RE)) return { version: 'upcoming' };
 
-  var versionMatch = str.match(/^v?(\d+\.\d+\.\d+)/);
+  var versionMatch = str.match(/^v?(\d+\.\d+\.\d+\.\d+)/);
   if (!versionMatch) return null;
 
   var version = _semver2.default.valid(versionMatch[1]);
