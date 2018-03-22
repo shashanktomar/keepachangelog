@@ -193,7 +193,7 @@ function isReleaseHeader(el) {
   if (!isHeaderLevel(el, 2)) return false;
 
   var text = (0, _builder.elementText)(el);
-  return text.match(/^v?\d+\.\d+\.\d+/) || text.match(UNRELEASED_RE);
+  return text.match(/^v?\d+\.\d+\.\d+\.\d+/) || text.match(UNRELEASED_RE);
 }
 
 /**

@@ -1,13 +1,13 @@
 'use strict';
 
-require('babel-polyfill');
-
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.init = init;
 exports.parse = parse;
 exports.read = read;
+
+require('babel/polyfill');
 
 var _parser = require('./parser');
 

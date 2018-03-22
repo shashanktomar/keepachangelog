@@ -1,6 +1,4 @@
-'use strict';
-
-require('babel-polyfill');
+import 'babel/polyfill';
 
 var fs = require('fs');
 var { find } = require('lodash-node');
